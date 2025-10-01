@@ -38,8 +38,9 @@ vector<wstring> GetAllDrives() {
     for (int i = 0; i < 26; ++i) {
         if (driveMask & (1 << i)) {
             wchar_t letter = L'A' + i;
+            wstring driveRoot = wstring(1, letter) + L":\\";
             if (GetDriveType(driveRoot.c_str()) != DRIVE_REMOVABLE) 
-                drives.push_back(wstring(1, letter) + L":\\");
+                drives.push_back(driveRoot);
         }
     }
     return drives;
